@@ -13,7 +13,29 @@ cd /workspaces/SDN-Simulation-with-OpenFlow
 sudo mn --custom topology.py --topo=mytopo --switch ovs --controller=none
 
 sudo bash flows.sh
-pingall
+
+mininet> pingall          # Test all hosts can ping each other
+mininet> h1 ping -c 4 h2  # Specific ping test
+mininet> iperf            # Bandwidth test between hosts
+mininet> exit             # Exit when done
+
+# Fat-Tree with 4 pods
+sudo python3 FatTree_4.py
+
+# Or Fat-Tree with 6 pods
+sudo python3 FatTree_6.py
+
+sudo wireshark &
+
+
+mininet> h1 apt update
+mininet> h1 apt install -y iputils-ping
+
+cd /workspaces/SDN-Simulation-with-OpenFlow
+sudo bash flows_fattree_6.sh
+python3 network_stats.py
+mininet> py exec(open('test_connectivity.py').read())
+mininet> sh sudo ovs-ofctl dump-flows s1
 
 MiniNet creates scalable Software-Defined Networks (up to hundreds of nodes) using OpenFlow, on a single PC. 
 It allows to quickly create, interact with and customize a software defined network prototype with complex topologies, and can be used to emulate real networks – all on your PC
