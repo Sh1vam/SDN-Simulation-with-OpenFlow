@@ -1,6 +1,17 @@
 # SDN-Simulation-with-OpenFlow
 Use Mininet to create topologies with OpenFlow switches and install flows to simulate network operations
 
+sudo apt update
+sudo apt install -y mininet openvswitch-switch wireshark python3 python3-pip
+sudo apt install -y openvswitch-testcontroller
+sudo python3 topology.py
+sudo bash flows.sh
+pingall
+sudo python3 FatTree_4.py
+sudo python3 FatTree_6.py
+
+sudo mn --custom topology.py --topo=mytopo --switch ovsk --controller=none
+sudo bash flows.sh
 MiniNet creates scalable Software-Defined Networks (up to hundreds of nodes) using OpenFlow, on a single PC. 
 It allows to quickly create, interact with and customize a software defined network prototype with complex topologies, and can be used to emulate real networks – all on your PC
 MiniNet can work with any kind of OpenFlow controller

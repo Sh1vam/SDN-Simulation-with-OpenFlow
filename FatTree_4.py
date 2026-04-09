@@ -27,7 +27,7 @@ class MyTopo( Topo ):
         s3 = self.addSwitch( 's3' )
         s4 = self.addSwitch( 's4' )
         s5 = self.addSwitch( 's5' )
-        s6 = self.addSwitch( 's6' 
+        s6 = self.addSwitch( 's6' )
 
         # Add links hosts--switches
         self.addLink(h1, s3)
